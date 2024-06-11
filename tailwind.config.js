@@ -10,6 +10,10 @@ module.exports = {
 
     theme: {
         extend: {
+            backgroundImage: {
+                'student-login':"url(../../public/images/bg_image01.jpg)"
+            }
+        },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 roboto: ['Roboto', 'sans-serif'],
@@ -21,7 +25,6 @@ module.exports = {
                 screen_height: '997px'
 
             },
-        },
     },
 
     plugins: [require('@tailwindcss/forms')],
