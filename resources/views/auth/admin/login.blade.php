@@ -47,5 +47,9 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+        <div>
+            <a class=" text-blue-600 text-xs hover:font-bold hover:text-sm" href="/">Go
+                back</a>
+        </div>
     </form>
 </x-guest-layout>

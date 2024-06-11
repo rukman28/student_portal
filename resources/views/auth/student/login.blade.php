@@ -27,8 +27,10 @@
 
     <div class=" flex justify-center items-center w-auto">
 
-        <form method='POST' action='#'>
-            <div class="bg-gradient-to-r from-green-600 to-yellow-600 px-10 py-8 rounded-3xl w-auto shadow-xl max-w-sm">
+        <form method='POST' action='{{ route('login') }}'>
+            @csrf
+            <div
+                class="border-2 border-red-800 bg-gradient-to-r from-green-600 to-yellow-600 px-10 py-8 rounded-3xl w-auto shadow-xl max-w-sm">
                 <div class="space-y-4">
                     <h1 class="text-center text-2xl font-semibold text-black">Student Login</h1>
                     <hr>
@@ -74,18 +76,19 @@
                 </div>
                 <div class="flex justify-center items-center mt-4">
                     <p class="inline-flex items-center text-black font-medium text-xs text-center">
-                        <span class="ml-2">You don't have an account?<a href="#"
+                        <span class="ml-2">You don't have an account?<a href="{{ route('register') }}"
                                 class="text-xs hover:font-bold ml-2 text-red-900 font-semibold">Register
                                 now &rarr;</a>
                         </span>
                     </p>
                 </div>
+                <div class="pt-6 text-base font-semibold leading-7">
+                    <p class="font-sans text-red-600 text-md hover:font-bold hover:text-red-800">
+                        <a href="/" class="absolute">&larr; Go back</a>
+                    </p>
+                </div>
             </div>
-            <div class="pt-6 text-base font-semibold leading-7">
-                <p class="font-sans text-red-600 text-md hover:font-bold hover:text-red-800">
-                    <a href="/" class="absolute">&larr; Home</a>
-                </p>
-            </div>
+
         </form>
     </div>
 </body>
