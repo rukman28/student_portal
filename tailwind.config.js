@@ -12,6 +12,14 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                roboto: ['Roboto', 'sans-serif'],
+                Fjualla: ['Fjalla One', 'sans-serif'],
+                notoserif: ['Noto Serif', 'serif'],
+            },
+            screens: {
+                tablet: '790px',
+                screen_height: '997px'
+
             },
         },
     },
