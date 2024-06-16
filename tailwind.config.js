@@ -21,7 +21,7 @@ module.exports = {
                 notoserif: ['Noto Serif', 'serif'],
             },
             screens: {
-                tablet: '790px',
+                sm: '790px',
                 screen_height: '997px'
 
             },

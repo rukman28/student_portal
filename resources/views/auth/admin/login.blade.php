@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout class=" bg-slate-100">
     <div class="flex justify-center font-bold">
         <h1>Admin Login</h1>
     </div>
@@ -36,20 +36,12 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+            <x-forgot-password />
 
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
-        <div>
-            <a class=" text-blue-600 text-xs hover:font-bold hover:text-sm" href="/">Go
-                back</a>
-        </div>
+        <x-go-back />
     </form>
 </x-guest-layout>

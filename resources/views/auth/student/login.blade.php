@@ -1,96 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>SkillTool | Student Login</title>
-</head>
-
-<body class="h-screen bg-gradient-to-t from-blue-500 to-slate-200">
-
-    {{-- header --}}
-    <section class=" mb-36">
-        <div class="flex justify-center ">
-            <h1 class=" text-2xl font-Fjualla font-bold text-green-900">S<span
-                    class=" text-4xl font-bold font-roboto text-red-900">K</span>ilL <span
-                    class=" text-4xl font-bold font-roboto text-red-900">T</span>ooL</h1>
-        </div>
-        <div class="flex justify-center mb-5">
-            <h3 class="font-roboto font-bold text-blue-900 text-xs uppercase">Horizon Campus</h3>
-        </div>
-
-    </section>
-    {{-- end of header --}}
-
-    <div class=" flex justify-center items-center w-auto">
-
-        <form method='POST' action='{{ route('login') }}'>
-            @csrf
-            <div
-                class="border-2 border-red-800 bg-gradient-to-r from-green-600 to-yellow-600 px-10 py-8 rounded-3xl w-auto shadow-xl max-w-sm">
-                <div class="space-y-4">
-                    <h1 class="text-center text-2xl font-semibold text-black">Student Login</h1>
-                    <hr>
-                    <div class="flex items-center border-2 py-2 px-3 rounded-md mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-5 w-5 text-red-800" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                        </svg>
-                        <input class="pl-2 outline-none border-none w-full rounded-md" type="email" name="email"
-                            value="" placeholder="Email" required />
-
-                    </div>
-                    <div class="flex items-center border-2 py-2 px-3 rounded-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-5 w-5 text-red-800" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <input class="pl-2 outline-none border-none w-full rounded-md" type="password" name="password"
-                            id="" placeholder="Password" required />
-
-                    </div>
-                </div>
-                <!-- Remember Me checkbox -->
-                <div class="flex justify-center items-center mt-4">
-                    <p class="inline-flex items-center text-black font-medium text-xs text-center">
-                        <input type="checkbox" id="rememberMeCheckbox" name="rememberMe" class="mr-2">
-                        <span class="text-xs font-semibold">Remember me?</span>
-                    </p>
-                </div>
-
-                <button type="submit" value="login" id="login"
-                    class="mt-6 w-full py-2.5 px-6 rounded-lg text-sm font-medium text-white hover:bg-blue-800 bg-blue-900">Login</button>
-                <hr>
-                <div class="flex justify-center items-center mt-4">
-                    <p class="inline-flex items-center text-black font-medium text-xs text-center">
-                        <span class="ml-2">Forgot password?<a href="#"
-                                class="text-xs hover:font-bold ml-2 text-red-900 font-semibold">Recover now &rarr;</a>
-                        </span>
-                    </p>
-                </div>
-                <div class="flex justify-center items-center mt-4">
-                    <p class="inline-flex items-center text-black font-medium text-xs text-center">
-                        <span class="ml-2">You don't have an account?<a href="{{ route('register') }}"
-                                class="text-xs hover:font-bold ml-2 text-red-900 font-semibold">Register
-                                now &rarr;</a>
-                        </span>
-                    </p>
-                </div>
-                <div class="pt-6 text-base font-semibold leading-7">
-                    <p class="font-sans text-red-600 text-md hover:font-bold hover:text-red-800">
-                        <a href="/" class="absolute">&larr; Go back</a>
-                    </p>
-                </div>
-            </div>
-
-        </form>
+<x-guest-layout class=" bg-gradient-to-tr from-green-600 to-yellow-600 ">
+    <div class="flex justify-center font-bold">
+        <h1 class=" text-gray-950">Student Login</h1>
     </div>
-</body>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-</html>
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" class=" text-gray-950" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" class=" text-gray-950" />
+
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox"
+                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <span class="ml-2 text-sm text-gray-950 ">{{ __('Remember me') }}</span>
+            </label>
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            <x-forgot-password />
+
+            <x-primary-button class="ml-3 ">
+                {{ __('Log in') }}
+            </x-primary-button>
+
+        </div>
+        <div class="flex justify-between mt-5 mr-3">
+            <x-go-back />
+            <x-register-link />
+        </div>
+    </form>
+</x-guest-layout>

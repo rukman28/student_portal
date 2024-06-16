@@ -13,25 +13,13 @@
 </head>
 
 <body class=" screen_height:h-screen bg-gradient-to-t from-blue-500 to-slate-300 ">
-    {{-- header --}}
-    <section class="">
-        <div class="flex justify-center ">
-            <h1 class=" text-2xl font-Fjualla font-bold text-green-900">S<span
-                    class=" text-4xl font-bold font-roboto text-red-900">K</span>ilL <span
-                    class=" text-4xl font-bold font-roboto text-red-900">T</span>ooL</h1>
-        </div>
-        <div class="flex justify-center mb-5">
-            <h3 class="font-roboto font-bold text-blue-900 text-xs uppercase">Horizon Campus</h3>
-        </div>
-
-    </section>
-    {{-- end of header --}}
+    <x-app-name />
 
     {{-- banner information --}}
     <section class="">
-        <div class=" flex flex-col tablet:flex-row tablet:mb-10 gap-4  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+        <div class=" flex flex-col sm:flex-row sm:mb-10 gap-4  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
             <div
-                class="tablet:rotate-6 tablet:hover:rotate-0 tablet:duration-150 relative mx-auto max-w-sm rounded-3xl  p-0.5 shadow-md shadow-lime-800 bg-red-700 border-4 border-pink-500">
+                class="sm:rotate-6 sm:hover:rotate-0 sm:duration-150 relative mx-auto max-w-sm rounded-3xl  p-0.5 shadow-md shadow-lime-800 bg-red-700 border-4 border-pink-500">
                 <div class=" p-7 rounded-3xl ">
                     <h1 class="font-bold text-xl text-black mb-2">Students' Skills</h1>
                     <p class=" text-slate-200">Tracking and developing students' skills enhances career readiness,
@@ -49,7 +37,7 @@
             </div>
 
             <div
-                class="relative mx-auto max-w-sm rounded-3xl tablet:-rotate-6 tablet:hover:rotate-0 tablet:duration-150  p-0.5 bg-yellow-600 border-4 border-green-500 shadow-md shadow-orange-900">
+                class="relative mx-auto max-w-sm rounded-3xl sm:-rotate-6 sm:hover:rotate-0 sm:duration-150  p-0.5 bg-yellow-600 border-4 border-green-500 shadow-md shadow-orange-900">
                 <div class=" p-7 rounded-3xl ">
                     <h1 class="font-bold text-xl mb-2 text-black">Skill Training</h1>
                     <p class="text-slate-200">Skill training involves structured programs designed to develop specific
@@ -63,11 +51,11 @@
 
     {{-- cards --}}
     <section class="">
-        <div class="flex flex-col tablet:flex-row mt-10 gap-4 mx-auto max-w-7xl  items-center grow">
+        <div class="flex flex-col sm:flex-row mt-10 gap-4 mx-auto max-w-7xl  items-center grow">
             {{-- univeristy picture --}}
 
             <div
-                class=" overflow-hidden tablet:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-red-600 to-green-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
+                class=" overflow-hidden sm:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-red-600 to-green-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
 
                 <img class="rounded-t-3xl w-full" src="{{ asset('images/university.jpg') }}" alt="" />
 
@@ -86,7 +74,7 @@
             {{-- student image and button --}}
 
             <div
-                class=" overflow-hidden tablet:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-yellow-600 to-red-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
+                class=" overflow-hidden sm:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-yellow-600 to-red-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
 
                 <img class="rounded-t-3xl w-full" src="{{ asset('images/student.jpg') }}" alt="" />
 
@@ -95,7 +83,7 @@
                     <div class="flex justify-end">
 
                         <a href="{{ route('login') }}"
-                            class=" py-2.5 px-6 rounded-lg text-sm font-medium text-white hover:bg-blue-800 bg-blue-900">Student</a>
+                            class=" inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Student</a>
                     </div>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-white"> Students</h5>
 
@@ -109,7 +97,7 @@
             {{-- admin image and button --}}
 
             <div
-                class=" overflow-hidden tablet:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-green-600 to-yellow-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
+                class=" overflow-hidden sm:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-green-600 to-yellow-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
 
                 <img class="rounded-t-3xl w-full" src="{{ asset('images/admin.jpg') }}" alt="" />
 
@@ -118,7 +106,7 @@
                     <div class="flex justify-end">
 
                         <a href="{{ route('admin.login') }}"
-                            class="py-2.5 px-6 rounded-lg text-sm font-medium text-white hover:bg-blue-800 bg-blue-900">Admin</a>
+                            class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Admin</a>
                     </div>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-white">Administration</h5>
 
@@ -132,7 +120,7 @@
 
             {{-- Skill tool card --}}
             <div
-                class=" overflow-hidden tablet:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-red-600 to-yellow-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
+                class=" overflow-hidden sm:h-[380px] basis-1/4 max-w-sm bg-gradient-to-r from-red-600 to-yellow-600 border border-gray-200 rounded-3xl shadow-xl dark:bg-gray-800 dark:border-gray-700">
                 <div>
                     <img class="rounded-t-3xl w-full" src="{{ asset('images/tool.jpg') }}" alt="" />
 
@@ -158,7 +146,7 @@
     {{-- testimonials --}}
     <section class=" ">
         <div
-            class=" flex flex-col tablet:mt-10 tablet:mb-9 mt-10 tablet:flex-row max-w-[400px] relative overflow-hidden  mx-auto gap-6 tablet:max-w-7xl items-center">
+            class=" flex flex-col sm:mt-10 sm:mb-9 mt-10 sm:flex-row max-w-[400px] relative overflow-hidden  mx-auto gap-6 sm:max-w-7xl items-center">
             <div class="max-w-7xl mx-auto ">
                 <div class="relative group ">
                     <div

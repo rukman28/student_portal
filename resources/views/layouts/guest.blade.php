@@ -17,23 +17,11 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased bg-gradient-to-t from-blue-500 to-slate-300">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-12 sm:pt-0 ">
-        {{-- header --}}
-        <section class=" mb-12">
-            <div>
-                <h1 class=" text-2xl font-Fjualla font-bold text-green-900">S<span
-                        class=" text-4xl font-bold font-roboto text-red-900">K</span>ilL <span
-                        class=" text-4xl font-bold font-roboto text-red-900">T</span>ooL</h1>
-            </div>
-            <div class="flex justify-center mb-5">
-                <h3 class="font-roboto font-bold text-blue-900 text-xs uppercase">Horizon Campus</h3>
-            </div>
-
-        </section>
-        {{-- end of header --}}
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-12 sm:pt-0">
+        <x-app-name />
 
         <div
-            class=" rounded-3xl w-[400px] sm:max-w-md mt-6 px-6 py-4 bg-white border-4 border-orange-400 shadow-md overflow-hidden sm:rounded-lg">
+            {{ $attributes->merge(['class' => 'rounded-3xl tablet:w-[400px] mt-6 px-6 py-4 bg-white border-4 border-red-800 shadow-md overflow-hidden sm:rounded-lg']) }}>
             {{ $slot }}
         </div>
     </div>
