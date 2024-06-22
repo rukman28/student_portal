@@ -5,7 +5,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('admin.login') }}">
         @csrf
 
         <!-- Email Address -->
@@ -42,6 +42,9 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
-        <x-go-back />
+        <div class="flex justify-between mt-5 mr-3">
+            <x-go-back />
+            <x-register-link registerPath="admin" />
+        </div>
     </form>
 </x-guest-layout>
