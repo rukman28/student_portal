@@ -44,7 +44,7 @@
 
         </div>
         <div class="flex justify-between mt-5 mr-3">
-            <x-go-back />
+            <x-back-to-welcome-link />
             <x-register-link registerPath="" />
         </div>
     </form>

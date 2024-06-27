@@ -16,9 +16,24 @@
                     <x-nav-link :href="route(Auth::guard('admin')->check() ? 'admin.dashboard' : 'dashboard')" :active="request()->routeIs(Auth::guard('admin')->check() ? 'admin.dashboard' : 'dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('programme.index')" :active="request()->routeIs('programme.*')">
-                        {{ __('Programme') }}
-                    </x-nav-link>
+                    @if (Auth::guard('admin')->check())
+                        <x-nav-link :href="route('programme.index')" :active="request()->routeIs('programme.*')">
+                            {{ __('Programme') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('module.index')" :active="request()->routeIs('module.*')">
+                            {{ __('Module') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('practical.index')" :active="request()->routeIs('practical.*')">
+                            {{ __('Practical') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('skillcategory.index')" :active="request()->routeIs('skillcategory.*')">
+                            {{ __('Skill Category') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('skill.index')" :active="request()->routeIs('skill.*')">
+                            {{ __('Skill') }}
+                        </x-nav-link>
+                    @endif
+
 
                 </div>
             </div>

@@ -5,9 +5,9 @@ namespace Database\Factories\admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Programme>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\admin\Practical>
  */
-class ProgrammeFactory extends Factory
+class PracticalFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,8 @@ class ProgrammeFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'level' => fake()->numberBetween(1, 6),
             'description' => fake()->text(),
+
         ];
     }
 }

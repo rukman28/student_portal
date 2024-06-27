@@ -43,7 +43,7 @@
             </x-primary-button>
         </div>
         <div class="flex justify-between mt-5 mr-3">
-            <x-go-back />
+            <x-back-to-welcome-link />
             <x-register-link registerPath="admin" />
         </div>
     </form>

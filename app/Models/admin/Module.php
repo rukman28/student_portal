@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Programme extends Model
+class Module extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'level',
+        'code',
         'description'
     ];
 }

@@ -3,11 +3,12 @@
 namespace Database\Factories\admin;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Programme>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\admin\Module>
  */
-class ProgrammeFactory extends Factory
+class ModuleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +19,9 @@ class ProgrammeFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'level' => fake()->numberBetween(1, 6),
+            'code' => Str::random(8),
             'description' => fake()->text(),
+
         ];
     }
 }
