@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\PracticalController;
-use App\Http\Controllers\admin\ProgrammeController;
+use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\SkillCategoryController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Models\admin\Programme;
