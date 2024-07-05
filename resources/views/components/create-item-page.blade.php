@@ -1,6 +1,6 @@
 {{-- This Create page compnonent is used for all the items except Programme items as it extra field level --}}
 
-<div class="flex flex-col justify-center items-center border-4 border-red-500 h-[700px]">
+<div class="flex flex-col justify-center items-center h-[700px]">
 
     <div class=" pb-4 text-xl">
         <h2>Create {{ $itemName }}</h2>
