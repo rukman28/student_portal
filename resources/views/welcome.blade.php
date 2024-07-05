@@ -9,7 +9,7 @@
         content="This web application has been developed to help students by letting them track all the skills they have practiced in the programme.">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>SkillTool</title>
+    <title>SkillTool | rukman</title>
 </head>
 
 <body class=" screen_height:h-screen bg-gradient-to-t from-blue-500 to-slate-300 ">
