@@ -2,41 +2,45 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Http\Controllers\Controller;
 use App\Models\admin\SkillCategory;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+
 
 class SkillCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
-        $skillcategories = SkillCategory::orderBy('name')->paginate(7);
+        $skillCategories = SkillCategory::orderBy('name')->paginate(7);
 
-        return view('admin.skill-category.index', ['items' => $skillcategories]);
+        return response()->view('admin.skill-category.index', ['items' => $skillCategories]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
-        return view('admin.skill-category.create');
+        return response()->view('admin.skill-category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'unique:skill_categories', 'max:255'],
@@ -45,66 +49,66 @@ class SkillCategoryController extends Controller
 
         SkillCategory::create($validatedData);
 
-        return redirect()->route('skillcategory.index')->with('success', 'The SkillCategory ' . $validatedData['name'] . ' has been created successfully!');
+        return redirect()->route('skillCategory.index')->with('success', 'The SkillCategory ' . $validatedData['name'] . ' has been created successfully!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\admin\SkillCategory  $skillCategory
-     * @return \Illuminate\Http\Response
+     * @param SkillCategory $skillCategory
+     * @return Response
      */
-    public function show(SkillCategory $skillcategory)
+    public function show(SkillCategory $skillCategory): Response
     {
 
-        return view('admin.skill-category.show', ['item' => $skillcategory]);
+        return response()->view('admin.skill-category.show', ['item' => $skillCategory]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\admin\SkillCategory  $skillCategory
-     * @return \Illuminate\Http\Response
+     * @param  SkillCategory  $skillCategory
+     * @return Response
      */
-    public function edit(SkillCategory $skillcategory)
+    public function edit(SkillCategory $skillCategory): Response
     {
-        return view('admin.skill-category.edit', ['item' => $skillcategory]);
+        return response()->view('admin.skill-category.edit', ['item' => $skillCategory]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\SkillCategory  $skillCategory
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  SkillCategory  $skillCategory
+     * @return RedirectResponse
      */
-    public function update(Request $request, SkillCategory $skillcategory)
+    public function update(Request $request, SkillCategory $skillCategory): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
             'description' => ['required', 'max:500'],
         ]);
 
-        if ($skillcategory->name == $validatedData['name']) {
-            $skillcategory->description = $validatedData['description'];
-            $skillcategory->update();
+        if ($skillCategory->name == $validatedData['name']) {
+            $skillCategory->description = $validatedData['description'];
+            $skillCategory->update();
         } else {
 
-            $skillcategory->update($validatedData);
+            $skillCategory->update($validatedData);
         }
 
-        return redirect()->route('skillcategory.index')->with('success', 'The SkillCategory ' . $validatedData['name'] . ' has been updated successfully!');
+        return redirect()->route('skillCategory.index')->with('success', 'The SkillCategory ' . $validatedData['name'] . ' has been updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\admin\SkillCategory  $skillCategory
-     * @return \Illuminate\Http\Response
+     * @param  SkillCategory  $skillCategory
+     * @return RedirectResponse
      */
-    public function destroy(SkillCategory $skillcategory)
+    public function destroy(SkillCategory $skillCategory): RedirectResponse
     {
-        $skillcategory->delete();
-        return back()->with('success', 'The SkillCategory ' . $skillcategory->name . ' has been deleted successfully!');
+        $skillCategory->delete();
+        return back()->with('success', 'The SkillCategory ' . $skillCategory->name . ' has been deleted successfully!');
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\admin;
-
+namespace App\Http\Controllers\Admin;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Programme;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ProgrammeController extends Controller
@@ -11,31 +12,31 @@ class ProgrammeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $programmes = Programme::orderBy('name')->paginate(7);
-        return view('admin.programme.index', ['items' => $programmes]);
+        return response()->view('admin.programme.index', ['items' => $programmes]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
-        return view('admin.programme.create');
+        return response()->view('admin.programme.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'unique:programmes', 'max:255'],
@@ -51,33 +52,33 @@ class ProgrammeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Http\Response
+     * @param Programme $programme
+     * @return Response
      */
-    public function show(Programme $programme)
+    public function show(Programme $programme): Response
     {
-        return view('admin.programme.show', ['item' => $programme, 'itemName' => 'Programme']);
+        return response()->view('admin.programme.show', ['item' => $programme, 'itemName' => 'Programme']);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Http\Response
+     * @param Programme $programme
+     * @return Response
      */
-    public function edit(Programme $programme)
+    public function edit(Programme $programme): Response
     {
-        return view('admin.programme.edit', ['item' => $programme]);
+        return response()->view('admin.programme.edit', ['item' => $programme]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Programme $programme
+     * @return RedirectResponse
      */
-    public function update(Request $request, Programme $programme)
+    public function update(Request $request, Programme $programme): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
@@ -100,10 +101,10 @@ class ProgrammeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Programme  $programme
-     * @return \Illuminate\Http\Response
+     * @param Programme $programme
+     * @return RedirectResponse
      */
-    public function destroy(Programme $programme)
+    public function destroy(Programme $programme): RedirectResponse
     {
 
         $programme->delete();

@@ -1,41 +1,43 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Models\admin\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+
 
 class SkillController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $skills = Skill::orderBy('name')->paginate(7);
-        return view('admin.skill.index', ['items' => $skills]);
+        return response()->view('admin.skill.index', ['items' => $skills]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
-        return view('admin.skill.create');
+        return response()->view('admin.skill.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'unique:skills', 'max:255'],
@@ -50,33 +52,33 @@ class SkillController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\admin\Skill  $skill
-     * @return \Illuminate\Http\Response
+     * @param  Skill  $skill
+     * @return Response
      */
-    public function show(Skill $skill)
+    public function show(Skill $skill): Response
     {
-        return view('admin.skill.show', ['item' => $skill]);
+        return response()->view('admin.skill.show', ['item' => $skill]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\admin\Skill  $skill
-     * @return \Illuminate\Http\Response
+     * @param  Skill  $skill
+     * @return Response
      */
-    public function edit(Skill $skill)
+    public function edit(Skill $skill): Response
     {
-        return view('admin.skill.edit', ['item' => $skill]);
+        return response()->view('admin.skill.edit', ['item' => $skill]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\Skill  $skill
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  Skill  $skill
+     * @return RedirectResponse
      */
-    public function update(Request $request, Skill $skill)
+    public function update(Request $request, Skill $skill): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
@@ -97,10 +99,10 @@ class SkillController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\admin\Skill  $skill
-     * @return \Illuminate\Http\Response
+     * @param  Skill  $skill
+     * @return RedirectResponse
      */
-    public function destroy(Skill $skill)
+    public function destroy(Skill $skill): RedirectResponse
     {
         $skill->delete();
         return back()->with('success', 'The Skill ' . $skill->name . ' has been deleted successfully!');

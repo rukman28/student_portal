@@ -15,6 +15,6 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::resource('programme', ProgrammeController::class)->only('index', 'destroy', 'create', 'store', 'show', 'edit', 'update');
     Route::resource('module', ModuleController::class)->only('index', 'destroy', 'create', 'store', 'show', 'edit', 'update');
     Route::resource('practical', PracticalController::class)->only('index', 'destroy', 'create', 'store', 'show', 'edit', 'update');
-    Route::resource('skillcategory', SkillCategoryController::class)->only('index', 'destroy', 'create', 'store', 'show', 'edit', 'update');
+    Route::resource('skillCategory', SkillCategoryController::class)->only('index', 'destroy', 'create', 'store', 'show', 'edit', 'update');
     Route::resource('skill', SkillController::class)->only('index', 'destroy', 'create', 'store', 'show', 'edit', 'update');
 });

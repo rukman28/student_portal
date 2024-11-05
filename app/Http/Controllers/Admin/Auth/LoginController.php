@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AdminLoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Nette\Schema\ValidationException;
 
 
 class LoginController extends Controller
@@ -26,11 +26,16 @@ class LoginController extends Controller
      */
     public function store(AdminLoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        try{
+            $request->authenticate();
 
-        $request->session()->regenerate();
+            $request->session()->regenerate();
 
-        return redirect()->intended(route('admin.dashboard', absolute: false));
+            return redirect()->intended(route('admin.dashboard', absolute: false));
+        } catch (ValidationException $e){
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        }
+
     }
 
     /**

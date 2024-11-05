@@ -5,7 +5,6 @@
 
 <div>
 
-
     <form method="POST" action="{{ route($actionRoute . '.destroy', $item) }}" class=" inline-block">
 
 

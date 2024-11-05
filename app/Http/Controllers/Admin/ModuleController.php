@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Module;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class ModuleController extends Controller
@@ -11,32 +12,32 @@ class ModuleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $modules = Module::orderBy('name')->paginate(7);
 
-        return view('admin.module.index', ['items' => $modules]);
+        return response()->view('admin.module.index', ['items' => $modules]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
-        return view('admin.module.create');
+        return response()->view('admin.module.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
@@ -56,33 +57,33 @@ class ModuleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\admin\Module  $module
-     * @return \Illuminate\Http\Response
+     * @param  Module  $module
+     * @return Response
      */
-    public function show(Module $module)
+    public function show(Module $module): Response
     {
-        return view('admin.module.show', ['item' => $module]);
+        return response()->view('admin.module.show', ['item' => $module]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\admin\Module  $module
-     * @return \Illuminate\Http\Response
+     * @param  Module  $module
+     * @return Response
      */
-    public function edit(Module $module)
+    public function edit(Module $module): Response
     {
-        return view('admin.module.edit', ['item' => $module]);
+        return response()->view('admin.module.edit', ['item' => $module]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\Module  $module
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  Module  $module
+     * @return RedirectResponse
      */
-    public function update(Request $request, Module $module)
+    public function update(Request $request, Module $module): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => ['required', 'max:255'],
@@ -109,10 +110,10 @@ class ModuleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\admin\Module  $module
-     * @return \Illuminate\Http\Response
+     * @param  Module  $module
+     * @return RedirectResponse
      */
-    public function destroy(Module $module)
+    public function destroy(Module $module): RedirectResponse
     {
         $module->delete();
         return back()->with('success', 'The Module ' . $module->code . ' has been deleted successfully!');
